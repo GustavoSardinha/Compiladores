@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "analisador.h"
 
-extern char *code; // variável global alocada em analisador.c
+extern char *code; 
 
 int main() {
     analisar_arquivo("teste.txt");
@@ -12,7 +12,7 @@ int main() {
         token = proximo_token();
     } while (token.nome_token != EOF);
 
-    free(code); // libera memória
+    free(code);
     return 0;
 }
 
