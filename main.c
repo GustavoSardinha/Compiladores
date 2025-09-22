@@ -10,7 +10,7 @@ int main() {
     Token token;
     do {
         token = proximo_token();
-    } while (token.nome_token != EOF);
+    } while (token.nome_token != EF);
 
     free(code);
     return 0;

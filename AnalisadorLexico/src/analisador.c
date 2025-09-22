@@ -23,7 +23,7 @@ void analisar_arquivo(char* caminho){
 
     code = (char*) malloc((tamanho + 1) * sizeof(char));
     if (code == NULL) {
-        printf("Erro ao alocar memória!\n");
+        printf("Erro ao alocar memoria!\n");
         exit(1);
     }
 
@@ -40,7 +40,7 @@ int falhar(){
 		case 12: partida = 20; break;
 		case 20: partida = 25; break;
 		case 25:
-			printf("Erro encontrado no código\n");
+			printf("Erro encontrado no cï¿½digo\n");
 			cont_sim_lido++;
 			break;
 		default:
@@ -58,18 +58,46 @@ Token proximo_token()
     while(code[cont_sim_lido] != '\0')
     {
         c = code[cont_sim_lido];
-        
-        if(c == ' ' || c == '\n' || c == '\t'){
-            cont_sim_lido++;
-            continue;
-        }
-
         switch (estado) {
             case 0:
                 if(c == '<') estado = 1;
                 else if(c == '=') estado = 5;
                 else if(c == '>') estado = 6;
                 else {
+                    if(c == ' ' || c == '\n' || c == '\t'){
+                        cont_sim_lido++;
+                        continue;
+                    }
+                    if(c == ';'){
+                        printf("<;,>\n");
+                        cont_sim_lido++;
+                        token.nome_token = PONTO_VIRGULA;
+                        return token;
+                    }
+                    if(c == '('){
+                        printf("<(,>");
+                        cont_sim_lido++;
+                        token.nome_token = PARENTESES_ESQ;
+                        return token;
+                    }
+                    if(c == ')'){
+                        printf("<),>");
+                        cont_sim_lido++;
+                        token.nome_token = PARENTESES_DIR;
+                        return token;
+                    }
+                    if(c == '{'){
+                        printf("<{,>");
+                        cont_sim_lido++;
+                        token.nome_token = BLOCO_ESQ;
+                        return token;
+                    }
+                    if(c == '}'){
+                        printf("<},>");
+                        cont_sim_lido++;
+                        token.nome_token = BLOCO_DIR;
+                        return token;
+                    }
                     estado = falhar();
                 }
                 break;
@@ -99,7 +127,6 @@ Token proximo_token()
                 return token;
 
             case 4: // <
-                cont_sim_lido++;
                 printf("<relop, LT>");
                 token.nome_token = RELOP;
                 token.atributo = LT;
@@ -130,7 +157,6 @@ Token proximo_token()
                 return token;
 
             case 8: // >
-                cont_sim_lido++;
                 printf("<relop, GT>");
                 token.nome_token = RELOP;
                 token.atributo = GT;
@@ -139,8 +165,7 @@ Token proximo_token()
         }
     }
 
-    token.nome_token = EOF;
-    token.atributo = 0;
+    token.nome_token = EF;
     return token;
 }
 
