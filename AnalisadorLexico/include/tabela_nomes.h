@@ -1,12 +1,15 @@
-#define TAM 50 
+
+#define TAM 1000
 
 typedef struct Simbolo {
     char nome[50];
-    char tipo[20];
-    char valor[20];
-    struct Simbolo* prox;
+    char classe;
+    int indice;
 } Simbolo;
 
-Simbolo* tabela[TAM];
-void inserir(const char* nome, const char* tipo, const char* valor);
-Simbolo* buscar(const char* nome);
+extern Simbolo* tabela[TAM];
+extern int nomes;
+
+void inserir_identificador(const char* nome);
+void inserir_palavra_reservada(const char* nome);
+int buscar(const char* nome);

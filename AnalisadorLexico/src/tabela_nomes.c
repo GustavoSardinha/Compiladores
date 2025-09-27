@@ -2,44 +2,42 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAM 50  
+#define TAM 1000  
+int nomes = 0;
 
 typedef struct Simbolo {
     char nome[50];
-    char tipo[20];
-    char valor[20];
-    struct Simbolo* prox;
+    char classe;
+    int indice;
 } Simbolo;
 
 Simbolo* tabela[TAM];  
 
-unsigned int hash(const char *str) {
-    unsigned int h = 0;
-    while (*str) {
-        h = (h * 31) + *str++;
-    }
-    return h % TAM;
-}
-
-void inserir(const char* nome, const char* tipo, const char* valor) {
-    unsigned int idx = hash(nome);
-
+void inserir_identificador(const char* nome) {
     Simbolo* novo = (Simbolo*) malloc(sizeof(Simbolo));
     strcpy(novo->nome, nome);
-    strcpy(novo->tipo, tipo);
-    strcpy(novo->valor, valor);
-    novo->prox = tabela[idx];
-    tabela[idx] = novo;
+    novo->classe = 'i';
+    tabela[nomes] = novo;
+    nomes++;
 }
-
-Simbolo* buscar(const char* nome) {
-    unsigned int idx = hash(nome);
-    Simbolo* atual = tabela[idx];
-    while (atual) {
-        if (strcmp(atual->nome, nome) == 0) {
-            return atual;
+void inserir_palavra_reservada(const char* nome) {
+    Simbolo* novo = (Simbolo*) malloc(sizeof(Simbolo));
+    strcpy(novo->nome, nome);
+    novo->classe = 's';
+    tabela[nomes] = novo;
+    nomes++;
+}
+int buscar(const char* nome) {
+    for(int i = 0; i < TAM; i++){
+        Simbolo* s = tabela[i];
+        if(s != NULL){
+            if(strcmp(s->nome, nome) == 0){
+                if(s->classe == 'i')
+                    return i;
+                else
+                    return -2;
+            }
         }
-        atual = atual->prox;
     }
-    return NULL;
+    return -1;
 }

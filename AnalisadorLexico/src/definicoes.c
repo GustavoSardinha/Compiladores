@@ -1,3 +1,4 @@
+#include <string.h>
 //NOME TOKENS
 #define IF 256
 #define THEN 257
@@ -21,4 +22,9 @@ typedef struct {
     int atributo;
 } Token;
 
-int filtrar_palavra_reservada(char* nome);
+int filtrar_palavra_reservada(char* nome) {
+    if (strcmp(nome, "if") == 0) return IF;
+    if (strcmp(nome, "then") == 0) return THEN;
+    if (strcmp(nome, "else") == 0) return ELSE;
+    return ID;
+}
