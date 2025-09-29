@@ -4,7 +4,6 @@
 typedef struct Simbolo {
     char nome[50];
     char classe;
-    int indice;
 } Simbolo;
 
 extern Simbolo* tabela[TAM];

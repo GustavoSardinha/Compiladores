@@ -1,4 +1,23 @@
-{n = num2;
-}
+inicio
+  int contador;
+  float resultado_media;
+  string mensagem;
+  
+  -- Este eh um comentario curto. Ele vai ate o final da linha.
+  
+  contador = 10;
+  resultado_media = 3.14 * (contador - 5) / 2.0;
 
-
+  if (resultado_media)
+    print("O resultado nn eh zero!");
+  else
+    { -- Comentário longo [[ aninhado ]] pode estar aqui
+      mensagem = "O resultado é zero";
+      print(mensagem);
+    }
+    
+  while (contador)
+    {
+      read(contador);
+    }    
+fim

@@ -8,7 +8,6 @@ int nomes = 0;
 typedef struct Simbolo {
     char nome[50];
     char classe;
-    int indice;
 } Simbolo;
 
 Simbolo* tabela[TAM];  
