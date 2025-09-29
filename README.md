@@ -20,7 +20,7 @@ git pull origin main
 Como compilar:
 ```bash
 cd Compiladores
-gcc main.c AnalisadorLexico/src/analisador.c -I AnalisadorLexico/include -o analisador
+gcc main.c AnalisadorLexico/src/analisador.c AnalisadorLexico/src/definicoes.c AnalisadorLexico/src/tabela_nomes.c AnalisadorLexico/src/tabela_valores.c -I AnalisadorLexico/include -o analisador
 ```
 Execução no Windows:
 ```bash
