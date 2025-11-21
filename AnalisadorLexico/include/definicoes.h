@@ -1,3 +1,7 @@
+#ifndef DEFINICOES_H
+#define DEFINICOES_H
+
+
 // NOME TOKENS
 #define INICIO          256
 #define FIM             257
@@ -38,3 +42,5 @@ typedef struct {
 } Token;
 
 int filtrar_palavra_reservada(char* nome);
+const char* nome_do_token(int tk);
+#endif

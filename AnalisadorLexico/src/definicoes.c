@@ -29,10 +29,10 @@
 #define EF             -1
 
 // ATRIBUTOS de OP
-#define MAIS            280
-#define MENOS           281
-#define PRODUTO         282
-#define DIVISAO         283
+#define MAIS            281
+#define MENOS           282
+#define PRODUTO         283
+#define DIVISAO         284
 
 typedef struct {
     int nome_token;
@@ -52,4 +52,39 @@ int filtrar_palavra_reservada(char* nome) {
     if (strcmp(nome, "float") == 0) return FLOAT_TK;
     if (strcmp(nome, "string") == 0) return STRING_TK;
     return ID;
+}
+const char* nome_do_token(int tk) {
+    switch(tk) {
+        case INICIO: return "inicio";
+        case FIM: return "fim";
+        case IF: return "if";
+        case THEN: return "then";
+        case ELSE: return "else";
+        case WHILE: return "while";
+        case PRINT: return "print";
+        case READ: return "read";
+        case INT_TK: return "int";
+        case FLOAT_TK: return "float";
+        case STRING_TK: return "string";
+        case ID: return "identificador";
+
+        case INT: return "inteiro";
+        case FLOAT: return "float literal";
+        case STRING: return "string literal";
+
+        case OP: return "operador";
+        case VIRGULA: return "vírgula";
+        case PONTO_VIRGULA: return "ponto e vírgula";
+        case PARENTESES_ESQ: return "(";
+        case PARENTESES_DIR: return ")";
+        case BLOCO_ESQ: return "{";
+        case BLOCO_DIR: return "}";
+        case COLCHETE_ESQ: return "[";
+        case COLCHETE_DIR: return "]";
+        case EQ: return "=";
+
+        case EF: return "fim de arquivo";
+
+        default: return "token desconhecido";
+    }
 }

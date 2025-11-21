@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "tabela_nomes.h": "c",
+        "analisador_sintatico.h": "c",
+        "definicoes.h": "c"
+    }
+}

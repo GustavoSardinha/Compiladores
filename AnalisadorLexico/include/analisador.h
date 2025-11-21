@@ -5,6 +5,6 @@
 
 void analisar_arquivo(char* caminho);
 Token proximo_token();
-
+int getLinha();
 #endif
 

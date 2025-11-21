@@ -1,0 +1,31 @@
+#ifndef ANALISADOR_SINTATICO_H
+#define ANALISADOR_SINTATICO_H
+
+#include "definicoes.h"
+#include "analisador.h"
+
+extern Token token;
+
+void match(int esperado);
+void syntax_error(const char *msg);
+
+void programa(void);
+void decls(void);
+void decl(void);
+void tipo(void);
+void comandos(void);
+void comando(void);
+void entrada(void);
+void saida(void);
+void if_stmt(void);
+void else_opt(void);
+void while_stmt(void);
+void bloco(void);
+void args(void);
+void expr_list(void);
+void expr(void);
+void expr2(void);
+void term(void);
+void term2(void);
+void factor(void);
+#endif 

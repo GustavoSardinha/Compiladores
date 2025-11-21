@@ -1,23 +1,23 @@
 inicio
-  int contador;
-  float resultado_media;
-  string mensagem;
-  
-  -- Este eh um comentario curto. Ele vai ate o final da linha.
-  
-  contador = 10;
-  resultado_media = 3.14 * (contador - 5) / 2.0;
+  int a; int A; float c;
+  string texto;
 
-  if (resultado_media)
-    print("O resultado nn eh zero!");
+  a = 42;
+  b = 7;
+  c = (a / b) * 3.14;
+
+  texto = "Valores: a=\"42\", b=\"7\", c=\"3.14\""; 
+  if (c - 1)
+    print("C menos 10!");
   else
-    { -- Comentário longo [[ aninhado ]] pode estar aqui
-      mensagem = "O resultado é zero";
-      print(mensagem);
-    }
-    
-  while (contador)
+    print("não eh C menos 10");
+
+  while (a)
     {
-      read(contador);
-    }    
+      b = b + 1;
+    }
+  { -- Bloco aninhado com comentarios [[ [[ internos ]] ]] 
+    texto = "Fim do teste4";
+    print(texto);
+  }
 fim
