@@ -18,6 +18,8 @@ int main() {
     inserir_palavra_reservada("else");
     inserir_palavra_reservada("while");
     programa();
+    if(getQntErros() == 0)
+        printf("O programa não apresenta erros sintáticos");
     free(code);
     return 0;
 }

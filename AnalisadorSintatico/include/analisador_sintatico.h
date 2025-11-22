@@ -6,6 +6,7 @@
 
 extern Token token;
 
+int getQntErros();
 void match(int esperado);
 void syntax_error(const char *msg);
 
