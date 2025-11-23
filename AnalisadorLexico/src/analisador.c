@@ -10,7 +10,7 @@ int estado = 0;
 int partida = 0;
 int cont_sim_lido = 0;
 char *code;
-int linha = 0;
+int linha = -1;
 
 
 int getLinha(){
@@ -21,7 +21,7 @@ void analisar_arquivo(char* caminho){
     FILE *arquivo;
     long tamanho;
 
-    arquivo = fopen(caminho, "r");    
+    arquivo = fopen(caminho, "r");
     if (!arquivo) {
         fprintf(stderr, "Erro ao abrir o arquivo!\n");
         exit(1);
@@ -31,31 +31,31 @@ void analisar_arquivo(char* caminho){
     tamanho = ftell(arquivo);
     rewind(arquivo);
 
-    code = (char*) malloc((tamanho + 2) * sizeof(char)); 
+    code = malloc(tamanho + 2);
     if (!code) {
         fprintf(stderr, "Erro ao alocar memoria!\n");
         exit(1);
     }
 
-    fread(code, sizeof(char), tamanho, arquivo);
+    fread(code, 1, tamanho, arquivo);
     code[tamanho] = '\0';
     fclose(arquivo);
 
-    int i = tamanho - 1;
-    while (i >= 0 && !isalnum((unsigned char)code[i])) {
+    long i = tamanho - 1;
+
+    while (i >= 0 && (code[i] == '\n' || code[i] == '\r'))
         i--;
-    }
 
-    if (i < 0) return;
+    long inicio = i;
+    while (inicio >= 0 && code[inicio] != '\n' && code[inicio] != '\r')
+        inicio--;
 
-    int fim_palavra = i;
-    while (fim_palavra < tamanho && isalnum((unsigned char)code[fim_palavra])) {
-        fim_palavra++;
-    }
+    inicio++;
 
-    code[fim_palavra] = '&';
-    code[fim_palavra + 1] = '\0';
+    code[inicio] = '&';
+    code[inicio + 1] = '\0';
 }
+
 
 
 int falhar(){
@@ -84,15 +84,16 @@ Token proximo_token()
     char c;
     char lexema[512];
     int li = 0;
-
+    c = code[cont_sim_lido];
+    
     while(code[cont_sim_lido] != '\0')
     {
+        c = code[cont_sim_lido];
         if(c == '\n')
             linha++;
         if(c == '&')
             break;
 
-        c = code[cont_sim_lido];
 
         switch (estado)
         {

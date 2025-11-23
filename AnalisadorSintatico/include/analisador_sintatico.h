@@ -7,8 +7,9 @@
 extern Token token;
 
 int getQntErros();
-void match(int esperado);
-void syntax_error(const char *msg);
+void match(int esperado, const int *sync, const char *msg, int size);
+void sincronizar(const char *msg, const int *sync, int size);
+int esta_no_conjunto(int tk, const int *set, int size);
 
 void programa(void);
 void decls(void);
@@ -23,10 +24,10 @@ void else_opt(void);
 void while_stmt(void);
 void bloco(void);
 void args(void);
-void expr_list(void);
-void expr(void);
-void expr2(void);
-void term(void);
-void term2(void);
-void factor(void);
+int expr_list(void);
+int expr(void);
+int expr2(void);
+int term(void);
+int term2(void);
+int factor(void);
 #endif 

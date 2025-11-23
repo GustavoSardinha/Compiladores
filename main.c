@@ -19,7 +19,7 @@ int main() {
     inserir_palavra_reservada("while");
     programa();
     if(getQntErros() == 0)
-        printf("O programa não apresenta erros sintáticos");
+        printf("Programa aceito!");
     free(code);
     return 0;
 }

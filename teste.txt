@@ -1,23 +1,25 @@
 inicio
-  int a; int A; float c;
+  int a; int b; float c;
   string texto;
 
   a = 42;
   b = 7;
   c = (a / b) * 3.14;
 
-  texto = "Valores: a=\"42\", b=\"7\", c=\"3.14\""; 
+  texto = 67; 
   if (c - 1)
-    print("C menos 10!");
+    print "C menos 10!");
   else
     print("não eh C menos 10");
 
   while (a)
     {
-      b = b + 1;
+      b = b + 1
     }
   { -- Bloco aninhado com comentarios [[ [[ internos ]] ]] 
     texto = "Fim do teste4";
     print(texto);
   }
 fim
+
+

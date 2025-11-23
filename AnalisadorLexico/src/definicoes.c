@@ -73,8 +73,8 @@ const char* nome_do_token(int tk) {
         case STRING: return "string literal";
 
         case OP: return "operador";
-        case VIRGULA: return "vírgula";
-        case PONTO_VIRGULA: return "ponto e vírgula";
+        case VIRGULA: return "virgula";
+        case PONTO_VIRGULA: return "ponto e virgula";
         case PARENTESES_ESQ: return "(";
         case PARENTESES_DIR: return ")";
         case BLOCO_ESQ: return "{";
